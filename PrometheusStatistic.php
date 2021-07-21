@@ -25,7 +25,7 @@ class PrometheusStatistic extends Threaded
         $this->type = $type;
     }
 
-    #[Pure] public function toReturnableWebString(): string
+    public function toReturnableWebString(): string
     {
         return "# HELP " . $this->identifier . " " . $this->getHelp() . PHP_EOL
             . "# TYPE " . $this->identifier . " " . $this->type . PHP_EOL

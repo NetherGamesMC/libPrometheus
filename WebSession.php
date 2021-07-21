@@ -15,18 +15,18 @@ class WebSession
     /**
      * @var Socket
      */
-    private $socket;
+    private Socket $socket;
 
-    public function __construct($socket)
+    public function __construct(Socket $socket)
     {
         $this->socket = $socket;
     }
 
 
     /**
-     * @return resource
+     * @return Socket
      */
-    public function getSocket(): mixed
+    public function getSocket(): Socket
     {
         return $this->socket;
     }
@@ -62,7 +62,7 @@ class WebSession
      * @param string $payload
      * Send data in a HTTP/1.1 format
      */
-    public function sendData(string $type, string $payload)
+    public function sendData(string $type, string $payload): void
     {
         $this->write("HTTP/1.1 200 OK\r\nContent-Type: " . $type . "\r\n\r\n" . $payload);
     }
