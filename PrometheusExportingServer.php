@@ -20,8 +20,10 @@ class PrometheusExportingServer extends Thread
      */
     public function __construct(int $port)
     {
-        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        if(!$this->socket) throw new Exception("Cannot create socket.");
+        $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        if(!$socket) throw new Exception("Cannot create socket.");
+        /** @var Socket socket */
+        $this->socket = $socket;
         if (!socket_bind($this->socket, "0.0.0.0", $port)) {
             throw new Exception("Failed to bind to 0.0.0.0:" . $port);
         }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace libPrometheus;
 
+use Exception;
 use Socket;
 
 /**
@@ -34,10 +35,16 @@ class WebSession
     /**
      * @return string
      * Read a string from the request socket
+     * @throws Exception
      */
     public function read(): string
     {
-        return socket_read($this->socket, 1024);
+        $result = socket_read($this->socket, 1024);
+        if (!$result) {
+            throw new Exception("Cannot read from socket");
+        }
+
+        return $result;
     }
 
     /**
