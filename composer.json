@@ -7,7 +7,7 @@
     "php": "^7.4 || ^8.0"
   },
   "require-dev": {
-    "phpstan/phpstan": "1.5.4"
+    "phpstan/phpstan": "1.5.5"
   },
   "minimum-stability": "dev"
 }
